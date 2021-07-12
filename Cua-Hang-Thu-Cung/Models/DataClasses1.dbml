@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dbWebsiteThuCung" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DESKTOP-MV5N6K9\SQLEXPRESS;Initial Catalog=dbWebsiteThuCung;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="dbWebsiteThuCungConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tblAdmin" Member="tblAdmins">
+    <Type Name="tblAdmin">
+      <Column Name="id_admin" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ho_ten" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="sdt" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="pw" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="trang_thai" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="ngay_tao" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ngay_cap_nhat" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="tblAdmin_tblBaiViet" Member="tblBaiViets" ThisKey="id_admin" OtherKey="id_admin" Type="tblBaiViet" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblUser" Member="tblUsers">
+    <Type Name="tblUser">
+      <Column Name="id_user" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="pw" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ho_ten" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="sdt" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="ngay_sinh" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="dia_chi" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="trang_thai" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="ngay_tao" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ngay_cap_nhat" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="tblUser_tblDonHang" Member="tblDonHangs" ThisKey="id_user" OtherKey="id_user" Type="tblDonHang" />
+      <Association Name="tblUser_tblGioHang" Member="tblGioHangs" ThisKey="id_user" OtherKey="id_user" Type="tblGioHang" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblBaiViet" Member="tblBaiViets">
+    <Type Name="tblBaiViet">
+      <Column Name="id_baiviet" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_dmbaiviet" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_admin" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tieu_de" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="chi_tiet" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="trang_thai" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="ngay_tao" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ngay_cap_nhat" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="tblAdmin_tblBaiViet" Member="tblAdmin" ThisKey="id_admin" OtherKey="id_admin" Type="tblAdmin" IsForeignKey="true" />
+      <Association Name="tblDanhMucBaiViet_tblBaiViet" Member="tblDanhMucBaiViet" ThisKey="id_dmbaiviet" OtherKey="id_dmbaiviet" Type="tblDanhMucBaiViet" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblChiTietDonHang" Member="tblChiTietDonHangs">
+    <Type Name="tblChiTietDonHang">
+      <Column Name="id_chitietdonhang" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_sanpham" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_donhang" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="so_luong" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="gia_ban" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Association Name="tblDonHang_tblChiTietDonHang" Member="tblDonHang" ThisKey="id_donhang" OtherKey="id_donhang" Type="tblDonHang" IsForeignKey="true" />
+      <Association Name="tblSanPham_tblChiTietDonHang" Member="tblSanPham" ThisKey="id_sanpham" OtherKey="id_sanpham" Type="tblSanPham" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblDanhMuc" Member="tblDanhMucs">
+    <Type Name="tblDanhMuc">
+      <Column Name="id_danhmuc" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_danhmuc_cha" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ten_danhmuc" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="meta_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ngay_tao" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="trang_thai" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Association Name="tblDanhMuc_tblSanPham" Member="tblSanPhams" ThisKey="id_danhmuc" OtherKey="id_danhmuc" Type="tblSanPham" />
+      <Association Name="tblDanhMucCha_tblDanhMuc" Member="tblDanhMucCha" ThisKey="id_danhmuc_cha" OtherKey="id_danhmuc_cha" Type="tblDanhMucCha" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblDanhMucBaiViet" Member="tblDanhMucBaiViets">
+    <Type Name="tblDanhMucBaiViet">
+      <Column Name="id_dmbaiviet" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ten_dmbaiviet" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="meta_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="trang_thai" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="ngay_tao" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ngay_cap_nhat" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="tblDanhMucBaiViet_tblBaiViet" Member="tblBaiViets" ThisKey="id_dmbaiviet" OtherKey="id_dmbaiviet" Type="tblBaiViet" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblDanhMucCha" Member="tblDanhMucChas">
+    <Type Name="tblDanhMucCha">
+      <Column Name="id_danhmuc_cha" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ten_danhmuc_cha" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="meta_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ngay_tao" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="trang_thai" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Association Name="tblDanhMucCha_tblDanhMuc" Member="tblDanhMucs" ThisKey="id_danhmuc_cha" OtherKey="id_danhmuc_cha" Type="tblDanhMuc" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblDonHang" Member="tblDonHangs">
+    <Type Name="tblDonHang">
+      <Column Name="id_donhang" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_user" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ho_ten" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="sdt" Type="System.String" DbType="VarChar(12) NOT NULL" CanBeNull="false" />
+      <Column Name="noi_nhan" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="so_luong" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="tong_tien" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="ghi_chu" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="hinh_thuc_thanh_toan" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="trang_thai" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="ngay_tao" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="tblDonHang_tblChiTietDonHang" Member="tblChiTietDonHangs" ThisKey="id_donhang" OtherKey="id_donhang" Type="tblChiTietDonHang" />
+      <Association Name="tblUser_tblDonHang" Member="tblUser" ThisKey="id_user" OtherKey="id_user" Type="tblUser" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblGioHang" Member="tblGioHangs">
+    <Type Name="tblGioHang">
+      <Column Name="id_giohang" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_user" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_sanpham" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="so_luong" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ngay_tao" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="tblUser_tblGioHang" Member="tblUser" ThisKey="id_user" OtherKey="id_user" Type="tblUser" IsForeignKey="true" />
+      <Association Name="tblSanPham_tblGioHang" Member="tblSanPham" ThisKey="id_sanpham" OtherKey="id_sanpham" Type="tblSanPham" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblMenu" Member="tblMenus">
+    <Type Name="tblMenu">
+      <Column Name="id_menu" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ten_menu" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="meta_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ngay_tao" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ngay_cap_nhat" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblSanPham" Member="tblSanPhams">
+    <Type Name="tblSanPham">
+      <Column Name="id_sanpham" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ten_sanpham" Type="System.String" DbType="NText NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="meta_name" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="id_danhmuc" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="id_thuonghieu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="mo_ta" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="cong_dung" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="huong_dan_su_dung" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="bao_quan" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="gia_mua" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="gia_ban" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="gia_khuyen_mai" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="so_luong" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="hinhanh" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="sanphammoi" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="noibat" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="trangthai" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="ngay_tao" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ngay_cap_nhap" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="tblSanPham_tblChiTietDonHang" Member="tblChiTietDonHangs" ThisKey="id_sanpham" OtherKey="id_sanpham" Type="tblChiTietDonHang" />
+      <Association Name="tblSanPham_tblGioHang" Member="tblGioHangs" ThisKey="id_sanpham" OtherKey="id_sanpham" Type="tblGioHang" />
+      <Association Name="tblDanhMuc_tblSanPham" Member="tblDanhMuc" ThisKey="id_danhmuc" OtherKey="id_danhmuc" Type="tblDanhMuc" IsForeignKey="true" />
+      <Association Name="tblThuongHieu_tblSanPham" Member="tblThuongHieu" ThisKey="id_thuonghieu" OtherKey="id_thuonghieu" Type="tblThuongHieu" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblSlider" Member="tblSliders">
+    <Type Name="tblSlider">
+      <Column Name="id_slider" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="link" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="mo_ta_1" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="mo_ta_2" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ghichu" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="trangthai" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tblThuongHieu" Member="tblThuongHieus">
+    <Type Name="tblThuongHieu">
+      <Column Name="id_thuonghieu" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ten_thuonghieu" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="meta_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="link_logo" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="trang_thai" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Association Name="tblThuongHieu_tblSanPham" Member="tblSanPhams" ThisKey="id_thuonghieu" OtherKey="id_thuonghieu" Type="tblSanPham" />
+    </Type>
+  </Table>
+</Database>

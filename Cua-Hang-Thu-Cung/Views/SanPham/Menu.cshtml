@@ -1,0 +1,57 @@
+﻿
+@{
+    List<Cua_Hang_Thu_Cung.Models.tblDanhMucCha> listDanhMucCha = ViewBag.ListDanhMucCha;
+    List<Cua_Hang_Thu_Cung.Models.tblDanhMuc> listDanhMuc = ViewBag.ListDanhMuc1;
+    var ID = ViewBag.ID;
+}
+
+
+<div class="filter-sidebar-left">
+    <div class="title-left">
+        <h3>Danh mục</h3>
+    </div>
+    <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men-">
+
+        @{var no = 1; }
+        @foreach (var item in listDanhMucCha)
+        {
+
+            <div class="list-group-collapse sub-men">
+                <a class="list-group-item list-group-item-action" href="#sub-men-@no" data-toggle="collapse" aria-expanded="true" aria-controls="sub-men1">
+                    @item.ten_danhmuc_cha 
+                </a>
+
+
+                @if (item.id_danhmuc_cha == ID)
+                {
+                    <div class="collapse show" id="sub-men-@no" data-parent="#list-group-men">
+                        <div class="list-group">
+                            @foreach (var item1 in listDanhMuc)
+                            {
+                                if (item1.id_danhmuc_cha == item.id_danhmuc_cha)
+                                {
+                                    <a href="/danh-muc/@item.meta_name-@item.id_danhmuc_cha/@item1.meta_name-@item1.id_danhmuc" class="list-group-item list-group-item-action"> @item1.ten_danhmuc</a>
+                                }
+                            }
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="collapse" id="sub-men-@no" data-parent="#list-group-men">
+                        <div class="list-group">
+                            @foreach (var item1 in listDanhMuc)
+                            {
+                                if (item1.id_danhmuc_cha == item.id_danhmuc_cha)
+                                {
+                                    <a href="/danh-muc/@item.meta_name-@item.id_danhmuc_cha/@item1.meta_name-@item1.id_danhmuc" class="list-group-item list-group-item-action"> @item1.ten_danhmuc</a>
+                                }
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+            no++;
+        }
+    </div>
+</div>

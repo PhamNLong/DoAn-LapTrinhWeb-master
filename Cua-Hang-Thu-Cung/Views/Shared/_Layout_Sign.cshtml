@@ -1,0 +1,325 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+
+
+@{
+    ViewBag.Title = "Dangnhap";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- Basic -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Site Metas -->
+    <title>Petshop</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="~/Images/Icon/icons8_cat_profile.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="~/Images/Icon/cat_profile_76px.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Assets/css/bootstrap.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="~/Assets/css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="~/Assets/css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="~/Assets/css/custom.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    @*<link rel="stylesheet" href="~/Assets/login.css">*@
+    <style>
+
+.brand-wrapper {
+  margin-bottom: 19px; }
+  .brand-wrapper .logo {
+    height: 37px; }
+
+.login-card {
+  border: 0;
+  border-radius: 27.5px;
+  box-shadow: 0 10px 30px 0 rgba(172, 168, 168, 0.43);
+  overflow: hidden; }
+  .login-card-img {
+    border-radius: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover; }
+  .login-card .card-body {
+    padding: 85px 60px 60px; }
+    @*@media (max-width: 422px) {
+      .login-card .card-body {
+        padding: 35px 24px; } }*@
+  .login-card-description {
+    font-size: 25px;
+    color: #000;
+    font-weight: normal;
+    margin-bottom: 23px; }
+  .login-card form {
+    max-width: 326px; }
+  .login-card .form-control {
+    border: 1px solid #d5dae2;
+    padding: 15px 25px;
+    margin-bottom: 20px;
+    min-height: 45px;
+    font-size: 13px;
+    line-height: 15;
+    font-weight: normal;
+    height: 50px;
+  }
+    .login-card .form-control::-webkit-input-placeholder {
+      color: #919aa3; }
+    .login-card .form-control::-moz-placeholder {
+      color: #919aa3; }
+    .login-card .form-control:-ms-input-placeholder {
+      color: #919aa3; }
+    .login-card .form-control::-ms-input-placeholder {
+      color: #919aa3; }
+    .login-card .form-control::placeholder {
+      color: #919aa3; }
+  .login-card .login-btn {
+    padding: 13px 20px 12px;
+    background-color: #000;
+    border-radius: 4px;
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 20px;
+    color: #fff;
+    margin-bottom: 24px; }
+    .login-card .login-btn:hover {
+      border: 1px solid #000;
+      background-color: transparent;
+      color: #000; }
+  .login-card .forgot-password-link {
+    font-size: 14px;
+    color: #919aa3;
+    margin-bottom: 12px; }
+  .login-card-footer-text {
+    font-size: 16px;
+    color: #0d2366;
+    margin-bottom: 60px; }
+    @*@media (max-width: 767px) {
+      .login-card-footer-text {
+        margin-bottom: 24px; } }*@
+  .login-card-footer-nav a {
+    font-size: 14px;
+    color: #919aa3; }
+
+/*# sourceMappingURL=login.css.map */
+    </style>
+</head>
+
+<body>
+
+    <!-- Start Main Top -->
+    <header class="main-header">
+        <!-- Start Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+
+
+
+            <div class="container">
+                <!-- Start Header Navigation -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="/trang-chu"><img src="~/Images/Icon/Mighty_Dog_Roofing_Logo.jpg" class="logo" alt=""></a>
+                </div>
+                <!-- End Header Navigation -->
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                        <li class="nav-item active" style="font-size:25px">Đăng nhập</li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+        </nav>
+        <!-- End Navigation -->
+    </header>
+    <!-- End Main Top -->
+
+
+
+    <main class="d-flex align-items-center min-vh-100 py-3 py-md-0" style="margin: 20px 0 20px 0">
+        <div class="container">
+           
+
+            @RenderBody()
+
+
+            <!-- <div class="card login-card">
+              <img src="assets/images/login.jpg" alt="login" class="login-card-img">
+              <div class="card-body">
+                <h2 class="login-card-title">Login</h2>
+                <p class="login-card-description">Sign in to your account to continue.</p>
+                <form action="#!">
+                  <div class="form-group">
+                    <label for="email" class="sr-only">Email</label>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="Email">
+                  </div>
+                  <div class="form-group">
+                    <label for="password" class="sr-only">Password</label>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                  </div>
+                  <div class="form-prompt-wrapper">
+                    <div class="custom-control custom-checkbox login-card-check-box">
+                      <input type="checkbox" class="custom-control-input" id="customCheck1">
+                      <label class="custom-control-label" for="customCheck1">Remember me</label>
+                    </div>
+                    <a href="#!" class="text-reset">Forgot password?</a>
+                  </div>
+                  <input name="login" id="login" class="btn btn-block login-btn mb-4" type="button" value="Login">
+                </form>
+                <p class="login-card-footer-text">Don't have an account? <a href="#!" class="text-reset">Register here</a></p>
+              </div>
+            </div> -->
+
+
+        </div>
+    </main>
+
+
+    <!-- Start Footer  -->
+    <footer>
+        <div class="footer-main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-top-box">
+                            <h3>Giờ làm việc</h3>
+                            <ul class="list-time">
+                                <li>Thứ Hai - Thứ Bảy: 7h đến 19h</li>
+                                <li>Chủ Nhật: 6h đến 22h</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-top-box">
+                            <h3>Khiếu nại - Góp ý</h3>
+                            <form class="newsletter-box">
+                                <div class="form-group">
+                                    <input class="" type="email" name="Email" placeholder="Địa chỉ email của bạn*" />
+                                    <i class="fa fa-envelope"></i>
+                                </div>
+                                <button class="btn hvr-hover" type="submit">Gửi đi</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-top-box">
+                            <h3>Mạng xã hội</h3>
+                            <p>Theo dõi chúng tôi để được thông báo khuyến mãi một cách sớm nhất.</p>
+                            <ul>
+                                <li><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-widget">
+                            <h4>Cửa hàng</h4>
+                            <p>PETSHOP.</p>
+                            <p>Chuyên cung cấp các sản phẩm thức ăn, thực phẩm chức năng, đồ dùng cho chó mèo. </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-link">
+                            <h4>Thông tin</h4>
+                            <ul>
+                                <li><a href="#">Về chúng tôi</a></li>
+                                <li><a href="#">Chăm sóc khách hàng</a></li>
+                                <li><a href="#">Điều khoản</a></li>
+                                <li><a href="#">Giao hàng</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+                        <div class="footer-link-contact">
+                            <h4>Liên hệ</h4>
+                            <ul>
+                                <li>
+                                    <p><i class="fas fa-map-marker-alt"></i>Địa chỉ: HUTECH E1, HCM City</p>
+                                </li>
+                                <li>
+                                    <p><i class="fas fa-phone-square"></i>Số điện thoại: <a href="tel:+84-0968686868">+84-09 68 68 68 68</a></p>
+                                </li>
+                                <li>
+                                    <p><i class="fas fa-envelope"></i>Email: <a href="mailto:petshop.1234@gmail.com">petshop.1234@gmail.com</a></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer  -->
+    <!-- Start copyright  -->
+    <div class="footer-copyright">
+        <p class="footer-company">
+            All Rights Reserved. &copy; 2021  <a href="#">- PetShop -</a> Thiết kế bởi: SKTL </a>
+        </p>
+    </div>
+    <!-- End copyright  -->
+
+    <a href="#" id="back-to-top" title="Back to top" style="display: none; padding-top: 7px;">&uarr;</a>
+
+    <script type="text/javascript">
+        function handleSelect(elm) {
+            window.location = elm.value;
+        }
+    </script>
+
+    <!-- ALL JS FILES -->
+    <script src="~/Assets/js/jquery-3.2.1.min.js"></script>
+    <script src="~/Assets/js/popper.min.js"></script>
+    <script src="~/Assets/js/bootstrap.min.js"></script>
+    <!-- ALL PLUGINS -->
+    <script src="~/Assets/js/jquery.superslides.min.js"></script>
+    <script src="~/Assets/js/bootstrap-select.js"></script>
+    <script src="~/Assets/js/inewsticker.js"></script>
+    <script src="~/Assets/js/bootsnav.js"></script>
+    <script src="~/Assets/js/images-loded.min.js"></script>
+    <script src="~/Assets/js/isotope.min.js"></script>
+    <script src="~/Assets/js/owl.carousel.min.js"></script>
+    <script src="~/Assets/js/baguetteBox.min.js"></script>
+    <script src="~/Assets/js/form-validator.min.js"></script>
+    <script src="~/Assets/js/contact-form-script.js"></script>
+    <script src="~/Assets/js/custom.js"></script>
+
+
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(".brand-box").niceScroll({
+            cursorcolor: "#9b9b9c",
+        });
+    </script>
+</body>
+
+</html>
